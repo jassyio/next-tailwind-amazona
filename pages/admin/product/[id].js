@@ -79,7 +79,7 @@ export default function AdminProductEditScreen() {
   const router = useRouter();
 
   const uploadHandler = async (e, imageField = 'image') => {
-    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/upload`;
+    const url = `CLOUDINARY_URL=cloudinary://137996119616835:ib9tvH1srk2zT4YyFfcBp6MpIJU@dmlyquckp /upload`;
     try {
       dispatch({ type: 'UPLOAD_REQUEST' });
       const {
