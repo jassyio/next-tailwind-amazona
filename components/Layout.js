@@ -11,6 +11,8 @@ import DropdownLink from './DropdownLink';
 import { useRouter } from 'next/router';
 import SearchIcon from '@heroicons/react/24/outline/MagnifyingGlassIcon';
 
+
+
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
 
@@ -41,15 +43,18 @@ export default function Layout({ title, children }) {
         <title>{title ? title + ' - JUNIA MART' : 'JUNIA MART'}</title>
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
+        
+
       </Head>
 
       <ToastContainer position="bottom-center" limit={1} />
+
 
       <div className="flex min-h-screen flex-col justify-between ">
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md">
             <Link href="/" className="text-lg font-bold">
-             <h1> JUNIA MART</h1>
+             Rad`s aparrel
             </Link>
             <form
               onSubmit={submitHandler}
@@ -133,7 +138,10 @@ export default function Layout({ title, children }) {
               )}
             </div>
           </nav>
+ 
+        
         </header>
+       
         <main className="container m-auto mt-4 px-4">{children}</main>
 
         <footer className="flex h-10 justify-center items-center shadow-inner">
