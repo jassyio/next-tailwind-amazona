@@ -144,8 +144,35 @@ export default function Layout({ title, children }) {
        
         <main className="container m-auto mt-4 px-4">{children}</main>
 
-        <footer className="flex h-10 justify-center items-center shadow-inner">
-          <p>Copyright © 2023 JUNIA MART </p>
+        <div className="socialmedia bg-gray-200 py-2  ">
+          <p>Reach us through</p>
+          <p>
+            <a href='https://www.facebook.com/login/' ><button type="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">facebook</button></a>
+            <a href='https://twitter.com/login'><button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">twitter</button></a>
+            <a href='https://www.instagram.com/'><button type="button" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">instagram</button></a>
+            <a><button type="button" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">email</button></a>
+            </p>
+        </div>
+
+          <footer className="flex flex-col justify-center items-center shadow-inner">
+          <div className="grid grid-cols-3 gap-20">
+    <div>
+      <h4 className="font-bold mb-4">About the Store</h4>
+      {/* Add your content for the "About the Store" section */}
+    </div>
+    <div>
+      <h4 className="font-bold mb-2">Quick Links</h4>
+      {/* Add your content for the "Quick Links" section */}
+    </div>
+    <div>
+      <h4 className="font-bold mb-2">Support Links</h4>
+      {/* Add your content for the "Support Links" section */}
+    </div>
+  </div>
+          <div className="mt-4">
+          <p className="text-center"
+          >Copyright © 2023 Rad`s aparrel` </p>
+          </div>        
         </footer>
       </div>
     </>

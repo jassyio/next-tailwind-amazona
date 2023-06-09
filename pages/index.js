@@ -48,7 +48,7 @@ export default function Home({ products }) {
         <div className="carousel-container overflow-hidden">
           {imagesToShow.map((product, index) => (
             <div key={index} className="carousel-item flex-shrink-0 active">
-              <image
+              <img
                 src={product.image}
                 alt={product.name}
                 className="carousel-image w-full rounded-sm object-cover"
