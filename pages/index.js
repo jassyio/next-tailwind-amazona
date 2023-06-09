@@ -1,14 +1,12 @@
 import axios from 'axios';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import Layout from '../components/Layout';
 import ProductItem from '../components/ProductItem';
 import Product from '../models/Product';
 import db from '../utils/db';
 import { Store } from '../utils/Store';
-import data from '../utils/data';
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { shuffle } from 'lodash';
 
 export default function Home({ products, featuredProducts }) {
@@ -35,9 +33,9 @@ export default function Home({ products, featuredProducts }) {
   const addToCartHandler = async (product) => {
     const existItem = cart.cartItems.find((x) => x.slug === product.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
-    const featuredProducts = data.products.slice(0, 4);
-    if (data.countInStock < quantity) {
+    const { data: productData } = await axios.get(`/api/products/${product._id}`);
+    const newFeaturedProducts = productData.products.slice(0, 4);
+    if (productData.countInStock < quantity) {
       return toast.error('Sorry. Product is out of stock');
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
@@ -46,14 +44,11 @@ export default function Home({ products, featuredProducts }) {
 
   return (
     <Layout title="Home Page">
-      <h2> Featured products</h2>
+      <h2>Featured products</h2>
       <div className="flex justify-center mb-8">
-      <div className="carousel-container overflow-hidden">
+        <div className="carousel-container overflow-hidden">
           {imagesToShow.map((product, index) => (
-            <div
-              key={index}
-              className="carousel-item flex-shrink-0 active"
-            >
+            <div key={index} className="carousel-item flex-shrink-0 active">
               <img
                 src={product.image}
                 alt={product.name}
