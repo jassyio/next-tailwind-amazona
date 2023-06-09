@@ -97,7 +97,7 @@ function OrderScreen() {
           type: 'resetOptions',
           value: {
             'client-id': clientId,
-            currency: 'USD',
+            currency: 'Ksh',
           },
         });
         paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
