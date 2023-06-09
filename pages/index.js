@@ -9,7 +9,7 @@ import { Store } from '../utils/Store';
 import { useState } from 'react';
 import { shuffle } from 'lodash';
 
-export default function Home({ products, featuredProducts }) {
+export default function Home({ products }) {
   const shuffledProducts = shuffle(products);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { state, dispatch } = useContext(Store);
@@ -21,7 +21,7 @@ export default function Home({ products, featuredProducts }) {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [shuffledProducts.length]);
 
   const imagesToShow = [
     shuffledProducts[currentImageIndex],
@@ -34,7 +34,6 @@ export default function Home({ products, featuredProducts }) {
     const existItem = cart.cartItems.find((x) => x.slug === product.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data: productData } = await axios.get(`/api/products/${product._id}`);
-    const newFeaturedProducts = productData.products.slice(0, 4);
     if (productData.countInStock < quantity) {
       return toast.error('Sorry. Product is out of stock');
     }
@@ -79,10 +78,8 @@ export default function Home({ products, featuredProducts }) {
 export async function getServerSideProps() {
   await db.connect();
   const products = await Product.find().lean();
-  const featuredProducts = await Product.find({ isFeatured: true }).lean();
   return {
     props: {
-      featuredProducts: featuredProducts.map(db.convertDocToObj),
       products: products.map(db.convertDocToObj),
     },
   };
