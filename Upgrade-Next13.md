@@ -27,7 +27,7 @@ no need to update Script and Font. we don't use them in the project
    ```env
    NEXT_PUBLIC_APP_URL=http://localhost:3000
    NEXTAUTH_URL=http://localhost:3000
-   NEXTAUTH_SECRET=somethingsecret
+   NEXTAUTH_SECRET=@samt1ng
    ```
 
    in production server add the correct url in the env variables
